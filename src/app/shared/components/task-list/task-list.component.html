@@ -1,0 +1,29 @@
+
+
+<mat-table #table [dataSource]="dataSource" matSort *ngIf="dataSource.length > 0" multiTemplateDataRows>
+	<ng-container matColumnDef="Name">
+		<mat-header-cell *matHeaderCellDef mat-sort-header>Name </mat-header-cell>
+		<mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+	</ng-container>
+
+	<ng-container matColumnDef="Status">
+		<mat-header-cell *matHeaderCellDef mat-sort-header>Status </mat-header-cell>
+		<mat-cell *matCellDef="let element"> {{element.status.toString()}} </mat-cell>
+	</ng-container>
+
+    <ng-container matColumnDef="DueDate">
+		<mat-header-cell *matHeaderCellDef mat-sort-header>Due Date </mat-header-cell>
+		<mat-cell *matCellDef="let element"> {{element.dueDate | date  : 'dd/MM/yyyy'}} </mat-cell>
+    
+	</ng-container>
+	<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+	<mat-row *matRowDef="let row; columns: displayedColumns;" (click)="row.toggle(row)">
+	</mat-row>
+
+    <ng-container matColumnDef="Priority">
+		<mat-header-cell *matHeaderCellDef mat-sort-header>Priority </mat-header-cell>
+		<mat-cell *matCellDef="let element"> {{element.priority}} </mat-cell>
+	</ng-container>
+</mat-table>
+
+<div *ngIf="dataSource.length === 0">No data</div>
