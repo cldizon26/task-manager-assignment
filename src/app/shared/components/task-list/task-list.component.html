@@ -1,4 +1,5 @@
-
+<div class="container">
+<button mat-raised-button color="accent">+ New Task</button>
 
 <mat-table #table [dataSource]="dataSource" matSort *ngIf="dataSource.length > 0" multiTemplateDataRows>
 	<ng-container matColumnDef="Name">
@@ -27,3 +28,4 @@
 </mat-table>
 
 <div *ngIf="dataSource.length === 0">No data</div>
+</div>
